@@ -25,7 +25,7 @@ def train(args):
         cuda_dev = None
 
     training_graphs = []
-
+    print(str(args.input / f"graphs_{'weighted' if args.weighted else 'unweighted'}.dgl"))
     dgl_graphs = dgl.load_graphs(str(args.input / f"graphs_{'weighted' if args.weighted else 'unweighted'}.dgl"))[0]
     random.shuffle(dgl_graphs)
 
@@ -59,6 +59,8 @@ def train(args):
         for gidx, graph in enumerate(tqdm(training_graphs)):
             features = graph.ndata['weight']
             labels = graph.ndata['label']
+            features = features.float()
+            labels = labels.float()
             model.train()
             # forward
             output = model(graph, features)
@@ -70,7 +72,7 @@ def train(args):
 
             if gidx % status_update_every == 0:
                 logger.info(f"Epoch {epoch}/{num_epochs}, Graph {gidx}/{len(training_graphs)}: Average Epoch Loss = {np.mean(epoch_losses)}, Last Training Loss = {loss}")
-
+        # ADD SOLUTION CONSTRUCTIN HERE
         torch.save(model.state_dict(), args.output / f"{int(time.time())}_intermediate_model{prob_maps}_{epoch}_{np.mean(epoch_losses):.2f}.torch")
 
     logger.info(f"Final: Average Epoch Loss = {np.mean(epoch_losses)}, Last Training Loss = {loss}")

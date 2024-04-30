@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser.add_argument("--time_limit", type=int, nargs="?", action="store", default=600, help="Time limit in seconds")
     parser.add_argument("--num_threads", type=int, nargs="?", action="store", default=8, help="Maximum number of threads to use.")
     parser.add_argument("--cuda_devices", type=int, nargs="*", action="store", default=[], help="Which cuda devices should be used (distributed around the threads in round-robin fashion). If not given, CUDA is disabled.")
-    parser.add_argument("--self_loops", action="store_true", default=False, help="Enable self loops addition (in input data) for GCN-based model.")
+    parser.add_argument("--self_loops", action="store_true", default=True, help="Enable self loops addition (in input data) for GCN-based model.")
     parser.add_argument("--max_prob_maps", type=int, action="store", default=32, help="Maximum number of probability maps to explore during tree-search (ignored for training).")
     parser.add_argument("--model_prob_maps", type=int, action="store", default=32, help="Number of probability maps the model was/should be trained for.")
     parser.add_argument("--pretrained_weights", type=Path, nargs="?", action="store", help="Pre-trained weights to be used for solving/continuing training.")

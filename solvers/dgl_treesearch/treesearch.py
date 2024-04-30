@@ -316,6 +316,7 @@ class _TreeSearch():
 
     def infer_prob_maps(self, residual):
         features = residual.ndata['weight']
+        features = features.float()
         if not self.noise_as_prob_maps:
             # actual model inference
             out = self.model(residual, features)
