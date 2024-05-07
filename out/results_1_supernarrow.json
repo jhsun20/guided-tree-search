@@ -1,0 +1,54 @@
+{
+    "ER_50_100_0.15_1223": {
+        "mwis": [
+            3,
+            5,
+            7,
+            15,
+            18,
+            26,
+            32,
+            35,
+            49,
+            53,
+            54,
+            63,
+            64,
+            65,
+            70,
+            71,
+            73
+        ],
+        "mwis_found": true,
+        "mwis_vertices": 17,
+        "mwis_weight": 17.0,
+        "process_time_to_find_mwis": 0.05785700000000005,
+        "time_to_find_mwis": 0.05827691700687865,
+        "total_solutions": 6,
+        "total_time": 2.8892018795013428
+    },
+    "ER_50_100_0.15_1936": {
+        "mwis": [
+            0,
+            8,
+            19,
+            24,
+            26,
+            34,
+            36,
+            37,
+            39,
+            44,
+            51,
+            54,
+            55
+        ],
+        "mwis_found": true,
+        "mwis_vertices": 13,
+        "mwis_weight": 13.0,
+        "process_time_to_find_mwis": 0.052535,
+        "time_to_find_mwis": 0.06994629100518068,
+        "total_solutions": 5,
+        "total_time": 3.462130069732666
+    }
+}

@@ -17,6 +17,7 @@ def parse_path(results_json_path: str, outputs_path: str) -> re.Match:
     # output path format
     # /(solver)/(pathto/to/graphtype)/test/results.json
     results_json_path = results_json_path.replace(outputs_path, "")
+    print(results_json_path)
     match = re.match(r"\/(?P<solver>\S+?)\/(?P<dataset>\S+)\/test(?:\/(?P<config>\S+))?\/results\.json", results_json_path)
     if not match:
         raise Exception(f"Could not parse path {results_json_path}.")
@@ -94,9 +95,12 @@ def main(args):
         "total_time"
     ]
     for result_file in args.experiment_output_folder.rglob("results.json"):
-        m = parse_path(str(result_file), str(args.experiment_output_folder))
-        solver = m["solver"]
-        config = m["config"]
+        print(result_file)
+        #m = parse_path(str(result_file), str(args.experiment_output_folder))
+        #solver = m["solver"]
+        solver = "dgl-treesearch"
+        #config = m["config"]
+        config = 'config'
         weighted = "-rgw" in str(result_file)
         for graph, metrics in parse_output_json(result_file, solver):
             if graph is not None and metrics is not None:
@@ -110,7 +114,6 @@ if __name__ == "__main__":
 
     parser.add_argument("experiment_output_folder", type=pathlib.Path, action="store",  help="Folder in which the output by the experiments are stored.")
     parser.add_argument("aggregation_output", type=pathlib.Path, action="store",  help="File into which to write the aggregated results as CSV.")
-
     args = parser.parse_args()
     args.aggregation_output.parent.mkdir(parents=True, exist_ok=True)
 

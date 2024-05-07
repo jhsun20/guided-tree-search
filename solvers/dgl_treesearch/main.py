@@ -25,7 +25,7 @@ if __name__ == '__main__':
     parser.add_argument("--local_search", action="store_true", default=False, help="Enable local search if time left.")
     parser.add_argument("--queue_pruning", action="store_true", default=False, help="Enable pruning of queue.")
     parser.add_argument("--weighted", action="store_true", default=False, help="Whether input is weighted or unweighted.")
-    parser.add_argument("--noise_as_prob_maps", action="store_true", default=False, help="Use uniform noise instead of GNN output.")
+    parser.add_argument("--noise_as_prob_maps", action="store_true", default=True, help="Use uniform noise instead of GNN output.")
     parser.add_argument("--weighted_queue_pop", action="store_true", default=False, help="Choose element from queue with probability inverse proportional to number of unlabelled vertices in it.")
 
     args = parser.parse_args()
